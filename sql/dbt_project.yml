@@ -1,0 +1,33 @@
+# THIS IS MY FIRST DBT PROJECT. WHO KNOWS WHAT ILL LEARN. SEND HELP!!
+#nOTE THAT DBT NAMES SHOULD ONLY CONTAIN LOWERCASE CHARACTERS AND UNDERSCORES!! NO SPACES?!?!
+# SO I BETTER MAKE SURE TO TURN OF CAPS LOCK
+
+#A profile contains all the details required to connect to your data warehouse.
+
+name: 'nyc_transit '
+#version: '1.0.0'
+#config-version: 2  # Stole this from solutions. Not sure if I know how this matters?
+profile: 'default' # This tells which profile dbt will use for this project
+
+#Need to map out where dbt should look for the various file types
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+model-paths: ["models"]
+
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+
+# Need to map out which directories to delete
+clean-targets:
+  - "target"
+  - "dbt-packages"
+
+# Now lets build something
+# Per the Solutions, I screwed this up before and couldnt get this to work even though it looks so basic
+
+models:
+  nyc_transit:
+    staging:
+     +schema: staging
+     +materialized: view
